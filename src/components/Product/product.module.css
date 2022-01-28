@@ -1,0 +1,43 @@
+.product {
+  border: 1px solid #ccc;
+  border-radius: 100px;
+  padding: 20px 40px;
+  background: chartreuse;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 34rem;
+  margin-top: 15px;
+}
+
+.button {
+  color: #0369a1;
+  border: 1px solid black;
+  padding: 5px 10px;
+}
+
+.inc {
+  background-color: #a6e0ff;
+}
+
+.value {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: darkcyan;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input {
+  border-radius: 5px;
+  background-color: burlywood;
+}
+
+.remove {
+  color: red;
+  border: 1px solid;
+}
