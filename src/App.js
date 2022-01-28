@@ -9,6 +9,7 @@ import MyTest from "./components/ProductList/MyTest";
 import Wrapper from "./components/hoc/Wrapper";
 import ClickCounter from "./components/hocExample/ClickCounter";
 import HoverCounter from "./components/hocExample/HoverCounter";
+import ParentComponent from "./MemoComponent/ParentComponent";
 
 // In this section we bring our products here to App component and we delete it from ProjectList component
 
@@ -114,6 +115,7 @@ const App = () => {
     <>
       <ClickCounter name="Ash Ghanei" />
       <HoverCounter />
+      <ParentComponent />
     </>
 
     // <div className="container">
