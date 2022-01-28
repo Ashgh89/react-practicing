@@ -14,6 +14,8 @@ const FunctionalCounter = () => {
     // So with these features we prevent of many useless rendering.
   }, [count]);
 
+  console.log("zh");
+
   return (
     <div>
       <input

@@ -7,15 +7,15 @@ const ParentComponent = () => {
 
   useEffect(() => {
     setInterval(() => {
-      console.log("update");
+      console.log("parent component-----------------");
       setName("Ash");
     }, 1000);
-  });
+  }, []);
 
   return (
     <div>
       parent component
-      <MemoCom name={name}></MemoCom>
+      <MemoCom name={name} />
     </div>
   );
 };

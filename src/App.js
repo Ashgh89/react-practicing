@@ -116,6 +116,7 @@ const App = () => {
       <ClickCounter name="Ash Ghanei" />
       <HoverCounter />
       <ParentComponent />
+      {/* <FunctionalCounter></FunctionalCounter> */}
     </>
 
     // <div className="container">
