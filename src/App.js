@@ -112,7 +112,7 @@ const App = () => {
     // If we add props here, e.g (name="Ash"), we must
     // give to our withCount.js, {...props}
     <>
-      <ClickCounter name="Ash" />
+      <ClickCounter name="Ash Ghanei" />
       <HoverCounter />
     </>
 
