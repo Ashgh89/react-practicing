@@ -1,12 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+// import { useEffect } from "react/cjs/react.development";
 import MemoCom from "./MemoCom";
 
 const ParentComponent = () => {
   const [name, setName] = useState("Ash");
 
+  useEffect(() => {
+    setInterval(() => {
+      console.log("update");
+      setName("Ash");
+    }, 1000);
+  });
+
   return (
     <div>
-      Parent Component<MemoCom name={name}></MemoCom>
+      parent component
+      <MemoCom name={name}></MemoCom>
     </div>
   );
 };
