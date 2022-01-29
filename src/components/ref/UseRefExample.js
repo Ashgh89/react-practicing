@@ -40,10 +40,13 @@ const UseRefExample = () => {
           generate random
         </button>
         <div>count is {count}</div>
-        <div>Previous count is {}</div>
+        <div>Previous count is {previousCount.current}</div>
       </div>
     </div>
   );
 };
+//NOTICE So all these previousValues are because ref does not re-render the component
+// That's why it remains and it show us the previous value and it is a good trick that
+// use ref in useEffect, so it will render for the second render and so on
 
 export default UseRefExample;
