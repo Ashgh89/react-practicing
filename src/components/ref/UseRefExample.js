@@ -19,6 +19,10 @@ const UseRefExample = () => {
     console.log("useEffect", previousValue.current);
   }, [inputValue]);
 
+  useEffect(() => {
+    previousCount.current = count;
+    // console.log("useEffect", previousValue.current);
+  }, [count]);
   // If we press (a) before useEffect, we render this return at first
   // So in return we have (inputValue = a)
   // And previousValue.current has still its first value and it is not changed and is still undefined
