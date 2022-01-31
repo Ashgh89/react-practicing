@@ -12,6 +12,7 @@ import HoverCounter from "./components/hocExample/HoverCounter";
 import ParentComponent from "./MemoComponent/ParentComponent";
 import FunctionalRef from "./components/ref/FunctionalRef";
 import UseRefExample from "./components/ref/UseRefExample";
+import CounterProvider from "./components/Context/CounterProvider";
 
 export const UserContext = React.createContext();
 
@@ -85,7 +86,10 @@ const App = () => {
 
   return (
     <>
-      <UserContext.Provider value={"First useContext example"}>
+      <CounterProvider>
+        <p>Welcome to counter</p>
+      </CounterProvider>
+      {/* <UserContext.Provider value={"First useContext example"}>
         <ProductList
           products={products}
           onRemove={removeHandler}
@@ -93,7 +97,7 @@ const App = () => {
           onChange={changeHandler}
           onDecrement={minusHandler}
         />
-      </UserContext.Provider>
+      </UserContext.Provider> */}
       {/* <ClickCounter name="Ash Ghanei" />
       <HoverCounter />
       <UseRefExample /> */}
