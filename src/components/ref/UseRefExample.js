@@ -11,8 +11,8 @@ const UseRefExample = () => {
   const changeHandler = (e) => {
     setInputValue(e.target.value);
   };
-  //   console.log("re-render", inputValue);
-  //   console.log("prev-render", previousValue.current);
+  console.log("re-render", inputValue);
+  console.log("prev-render", previousValue.current); // It is always undefine unless we put it in useEffect to update it
 
   useEffect(() => {
     previousValue.current = inputValue; // ref does not re-render component, just render itself when inputValue changes

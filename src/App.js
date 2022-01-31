@@ -13,7 +13,7 @@ import ParentComponent from "./MemoComponent/ParentComponent";
 import FunctionalRef from "./components/ref/FunctionalRef";
 import UseRefExample from "./components/ref/UseRefExample";
 
-// In this section we bring our products here to App component and we delete it from ProjectList component
+export const UserContext = React.createContext();
 
 const App = () => {
   const [products, setProducts] = useState([
@@ -21,10 +21,6 @@ const App = () => {
     { title: "Vue.js", price: "80€", id: "2", quantity: "2" },
     { title: "Angular.js", price: "30€", id: "3", quantity: "3" },
   ]);
-
-  const [isShow, setIsShow] = useState(true);
-
-  const [count, setCount] = useState(0);
 
   // We bring our events to App components and delete them from ProductsList component.
   // And all of these things is because of NavBar component.
@@ -76,16 +72,6 @@ const App = () => {
       products1[index] = product;
       setProducts(products1);
     }
-
-    // const myProducts = [...products];
-    // const selectedItem = myProducts.find((p) => p.id === id);
-    // if (selectedItem.quantity === 1) {
-    //   const filterProducts = myProducts.filter((p) => p.id !== id);
-    //   setProducts(filterProducts);
-    // } else {
-    //   selectedItem.quantity--;
-    //   setProducts(myProducts);
-    // }
   };
 
   const changeHandler = (event, id) => {
@@ -97,30 +83,20 @@ const App = () => {
     setProducts(myProducts);
   };
 
-  const clickHandler = (myName) => {
-    setProducts([
-      { title: "React.js", price: "980€" },
-      { title: myName, price: "880€" },
-      { title: "Angular.js", price: "380€" },
-    ]);
-  };
-
-  const countHandler = (id) => {
-    console.log("clicked", id);
-    setCount((prevCount) => prevCount + 1);
-  };
-
-  // const [isShow, setIsShow]=useState(true); We have it in this page (Upon)
   return (
-    // If we add props here, e.g (name="Ash"), we must
-    // give to our withCount.js, {...props}
     <>
-      <ClickCounter name="Ash Ghanei" />
+      <UserContext.Provider value={"First useContext example"}>
+        <ProductList
+          products={products}
+          onRemove={removeHandler}
+          onIncrement={addHandler}
+          onChange={changeHandler}
+          onDecrement={minusHandler}
+        />
+      </UserContext.Provider>
+      {/* <ClickCounter name="Ash Ghanei" />
       <HoverCounter />
-      {/* <ParentComponent /> */}
-      {/* <FunctionalRef /> */}
-      <UseRefExample />
-      {/* <FunctionalCounter></FunctionalCounter> */}
+      <UseRefExample /> */}
     </>
 
     // <div className="container">

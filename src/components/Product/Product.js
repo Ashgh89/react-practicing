@@ -1,7 +1,8 @@
 import styles from "./product.module.css";
-import React, { useState } from "react";
+import { useContext, useState } from "react";
 import { BiTrash } from "react-icons/bi";
 import { useEffect } from "react";
+import { UserContext } from "../../App";
 
 const Product = ({
   changingType,
@@ -24,6 +25,9 @@ const Product = ({
     // if [] is not empty, for example [count], it means this useEffect will only render very first time and when [count] is changing.
     // without [] it render everytime when we click or type
   }, []);
+
+  const user = useContext(UserContext);
+  console.log(user);
 
   const changeHandler = (e) => {
     setUsername(e.target.value);
