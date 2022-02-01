@@ -14,6 +14,7 @@ import FunctionalRef from "./components/ref/FunctionalRef";
 import UseRefExample from "./components/ref/UseRefExample";
 import CounterProvider from "./components/Context/CounterProvider";
 import CounterOne from "./components/Context/CounterOne";
+import CountReducer from "./components/Reducer/CountReducer";
 
 export const UserContext = React.createContext();
 
@@ -89,7 +90,8 @@ const App = () => {
     <>
       <CounterProvider>
         <p>Welcome to counter</p>
-        <CounterOne />
+        {/* <CounterOne /> */}
+        <CountReducer />
       </CounterProvider>
       {/* <UserContext.Provider value={"First useContext example"}>
         <ProductList
