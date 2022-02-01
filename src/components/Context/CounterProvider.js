@@ -25,9 +25,11 @@ export const useCount = () => useContext(CounterContext);
 export const useCountActions = () => {
   const setCount = useContext(CounterContextDispatcher);
 
-  const addOne = (prevCount) => prevCount + 1;
+  const addOne = () => setCount((prevCount) => prevCount + 1);
 
-  const addFive = (prevCount) => prevCount + 5;
+  const addFive = () => setCount((prevCount) => prevCount + 5);
 
-  const decrement = (prevCount) => prevCount - 1;
+  const decrement = () => setCount((prevCount) => prevCount - 1);
+
+  return { addOne, addFive, decrement };
 };
