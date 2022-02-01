@@ -18,7 +18,7 @@ const CounterProvider = ({ children }) => {
 
 export default CounterProvider;
 
-// So there is cleaner way to write your context hook
+// So there is cleaner way to write your context hook and manage actions
 
 export const useCount = () => useContext(CounterContext);
 
