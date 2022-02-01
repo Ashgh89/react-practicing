@@ -18,8 +18,16 @@ const CounterProvider = ({ children }) => {
 
 export default CounterProvider;
 
-// So now we must export context always, so there is a good way to not export it
+// So there is cleaner way to write your context hook
 
 export const useCount = () => useContext(CounterContext);
 
-export const useCountActions = () => useContext(CounterContextDispatcher);
+export const useCountActions = () => {
+  const setCount = useContext(CounterContextDispatcher);
+
+  const addOne = (prevCount) => prevCount + 1;
+
+  const addFive = (prevCount) => prevCount + 5;
+
+  const decrement = (prevCount) => prevCount - 1;
+};
