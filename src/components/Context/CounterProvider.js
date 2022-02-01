@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { useState } from "react/cjs/react.development";
 
-export const CounterContext = React.createContext(); // state
-export const CounterContextDispatcher = React.createContext(); // setState()
+/*export*/ const CounterContext = React.createContext(); // state
+/*export*/ const CounterContextDispatcher = React.createContext(); // setState()
 
 const CounterProvider = ({ children }) => {
   const [count, setCount] = useState(0);
@@ -20,4 +20,6 @@ export default CounterProvider;
 
 // So now we must export context always, so there is a good way to not export it
 
-const useCounter = () => useContext(CounterContext);
+export const useCount = () => useContext(CounterContext);
+
+export const useCountActions = () => useContext(CounterContextDispatcher);
