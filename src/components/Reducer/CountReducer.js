@@ -1,5 +1,4 @@
 import { useReducer, useState } from "react";
-
 // 5. Now define reducer function and initialState
 const initialState = 0;
 // 6. reducer function hast 2 parameters => reducer(state,action);
@@ -12,11 +11,13 @@ const reducer = (state, action) => {
       return state + 7;
     case "decrement":
       return state - 1;
+    case "reset":
+      return initialState;
     default:
       return state;
   }
 };
-// useReducer :
+// useReducer ::
 // 1. Very similar to useState, so for state managment
 // 2. Reduce
 
@@ -43,15 +44,14 @@ const CountReducer = () => {
   //   const decrement = () => {
   //     setCount((prevCount) => prevCount - 1);
   //   };
-
   return (
     <div>
       <h2>count is {count}</h2>
       <button onClick={() => dispatch("addOne")}>add one</button>
       <button onClick={() => dispatch("addSeven")}>add seven</button>
       <button onClick={() => dispatch("decrement")}>decrement</button>
+      <button onClick={() => dispatch("reset")}>reset</button>
     </div>
   );
 };
-
 export default CountReducer;
