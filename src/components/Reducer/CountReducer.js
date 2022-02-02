@@ -17,7 +17,7 @@ const reducer = (state, action) => {
       return state;
   }
 };
-// useReducer ::
+// useReducer :
 // 1. Very similar to useState, so for state managment
 // 2. Reduce
 
