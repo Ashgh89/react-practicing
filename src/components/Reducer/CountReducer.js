@@ -4,6 +4,7 @@ const initialState = 0;
 // 6. reducer function hast 2 parameters => reducer(state,action);
 // NOTICE we can write this reducer down there into useReducer(REDUCER (except this reducer we can give this function), initialState)
 const reducer = (state, action) => {
+  console.log(state, action);
   switch (action) {
     case "addOne":
       return state + 1;
