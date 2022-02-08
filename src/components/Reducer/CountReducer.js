@@ -1,9 +1,11 @@
 import { useReducer } from "react";
 
 // Now let's do more complex state and action
+// Now let's to handle multiple state
 
 const initialState = {
   firstCounter: 0,
+  secondCounter: 0,
 };
 
 const reducer = (state, action) => {
