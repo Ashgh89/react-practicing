@@ -90,8 +90,8 @@ const App = () => {
     <>
       <CounterProvider>
         <p>Welcome to counter</p>
-        {/* <CounterOne /> */}
-        <CountReducer />
+        <CounterOne />
+        {/* <CountReducer /> */}
       </CounterProvider>
       {/* <UserContext.Provider value={"First useContext example"}>
         <ProductList
