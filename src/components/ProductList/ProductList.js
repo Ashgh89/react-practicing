@@ -1,8 +1,15 @@
 import Product from "../Product/Product";
 import React, { useState } from "react";
+import {
+  useProducts,
+  useProductsActions,
+} from "../Providers/ProductsProviders";
 
 const ProductList = (props) => {
-  const { onRemove, onIncrement, onChange, onDecrement, products } = props;
+  // const { onRemove, onIncrement, onChange, onDecrement, products } = props;
+  const products = useProducts();
+  const { removeHandler, addHandler, changeHandler, minusHandler } =
+    useProductsActions();
   //----------------------------------------------------------------------------------
   // FIRST WAY
   // if (products.length === 0) return <div>There is nothing</div>;
@@ -15,10 +22,10 @@ const ProductList = (props) => {
           <Product
             key={product.id}
             product={product}
-            onDelete={() => onRemove(product.id)}
-            onIncrement={() => onIncrement(product.id)}
-            changingType={(e) => onChange(e, product.id)}
-            onDecrement={() => onDecrement(product.id)}
+            onDelete={() => removeHandler(product.id)}
+            onIncrement={() => addHandler(product.id)}
+            changingType={(e) => changeHandler(e, product.id)}
+            onDecrement={() => minusHandler(product.id)}
           />
         );
       })}

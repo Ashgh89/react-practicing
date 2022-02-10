@@ -26,9 +26,6 @@ const Product = ({
     // without [] it render everytime when we click or type
   }, []);
 
-  const user = useContext(UserContext);
-  console.log(user);
-
   const changeHandler = (e) => {
     setUsername(e.target.value);
   };
