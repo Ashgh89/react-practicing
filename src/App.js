@@ -15,21 +15,20 @@ import UseRefExample from "./components/ref/UseRefExample";
 import CounterProvider from "./components/Context/CounterProvider";
 import CounterOne from "./components/Context/CounterOne";
 import CountReducer from "./components/Reducer/CountReducer";
+import ProductsProvider, {
+  useProducts,
+} from "./components/Providers/ProductsProviders";
 
 export const UserContext = React.createContext();
 
 const App = () => {
-  const [products, setProducts] = useState([
-    { title: "React.js", price: "90€", id: "1", quantity: "1" },
-    { title: "Vue.js", price: "80€", id: "2", quantity: "2" },
-    { title: "Angular.js", price: "30€", id: "3", quantity: "3" },
-  ]);
+  // const [products, setProducts] = useState([
+  //   { title: "React.js", price: "90€", id: "1", quantity: "1" },
+  //   { title: "Vue.js", price: "80€", id: "2", quantity: "2" },
+  //   { title: "Angular.js", price: "30€", id: "3", quantity: "3" },
+  // ]);
+  const product = useProducts();
 
-  // We bring our events to App components and delete them from ProductsList component.
-  // And all of these things is because of NavBar component.
-  // Because NavBar needs products as well and it can't take it from its sibling (ProductList)
-  // So we must bring products and all events here to parent component (App component), so NavBar and ProductList can use it together.
-  // And with props can ProductList give products to its child component(Product)
   const removeHandler = (goalId) => {
     console.log("Removed", goalId);
     const mySetProducts = products.filter((p) => p.id !== goalId);
@@ -88,12 +87,16 @@ const App = () => {
 
   return (
     <>
-      <CounterProvider>
-        <p>Welcome to counter</p>
-        <CounterOne />
-        {/* <CountReducer /> */}
-      </CounterProvider>
-      {/* <UserContext.Provider value={"First useContext example"}>
+      {/* <NavBar totalItem={products.filter((p) => p.quantity > 0).length} />
+      <ProductList
+        products={products}
+        onRemove={removeHandler}
+        onIncrement={addHandler}
+        onChange={changeHandler}
+        onDecrement={minusHandler}
+      /> */}
+      <ProductsProvider>
+        <NavBar totalItem={products.filter((p) => p.quantity > 0).length} />
         <ProductList
           products={products}
           onRemove={removeHandler}
@@ -101,24 +104,8 @@ const App = () => {
           onChange={changeHandler}
           onDecrement={minusHandler}
         />
-      </UserContext.Provider> */}
-      {/* <ClickCounter name="Ash Ghanei" />
-      <HoverCounter />
-      <UseRefExample /> */}
+      </ProductsProvider>
     </>
-
-    // <div className="container">
-    //   <h1>My List</h1>
-    //   <NavBar totalItem={products.filter((p) => p.quantity > 0).length} />
-    //   <ProductList
-    //     products={products}
-    //     onRemove={removeHandler}
-    //     onIncrement={addHandler}
-    //     onChange={changeHandler}
-    //     onDecrement={minusHandler}
-    //   />
-    //   <button onClick={() => countHandler(200)}>Add Item: {count}</button>{" "}
-    // </div>
   );
 };
 
