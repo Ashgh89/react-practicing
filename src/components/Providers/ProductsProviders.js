@@ -4,27 +4,23 @@ import { useState } from "react/cjs/react.development";
 /*export*/ const ProductContext = React.createContext(); // state
 /*export*/ const ProductContextDispatcher = React.createContext(); // setState()
 
-const initialState = 0;
-const reducer = (state, action) => {
-  console.log(state, action);
-  switch (action.type) {
-    case "add":
-      return state + action.value;
-    case "decrement":
-      return state - action.value;
-    case "reset":
-      return initialState;
-    default:
-      return state;
-  }
-};
+// 3. NOW CREATE initialSTate
+const initialState = [
+  { title: "React.js", price: "90€", id: "1", quantity: "1" },
+  { title: "Vue.js", price: "80€", id: "2", quantity: "2" },
+  { title: "Angular.js", price: "30€", id: "3", quantity: "3" },
+];
 
 const ProductsProvider = ({ children }) => {
-  const [products, setProducts] = useState([
-    { title: "React.js", price: "90€", id: "1", quantity: "1" },
-    { title: "Vue.js", price: "80€", id: "2", quantity: "2" },
-    { title: "Angular.js", price: "30€", id: "3", quantity: "3" },
-  ]);
+  // 1. NOW LET'S USE useReducer, SO First we comment the useState and create useReducer
+  // const [products, setProducts] = useState([
+  //   { title: "React.js", price: "90€", id: "1", quantity: "1" },
+  //   { title: "Vue.js", price: "80€", id: "2", quantity: "2" },
+  //   { title: "Angular.js", price: "30€", id: "3", quantity: "3" },
+  // ]);
+
+  // 2. SO LET'S CREATE useReducer
+  const [products, setProducts] = useReducer(reducer, initialState);
 
   return (
     <ProductContext.Provider value={products}>
@@ -61,13 +57,10 @@ export const useProductsActions = () => {
     const selectedItem = myProducts.find((p) => p.id === goalId);
     selectedItem.quantity++;
     setProducts(myProducts);
-  };
-
-  const deleteItemHandler = (goalId2) => {
-    setProducts((prevGoals) => {
-      const updatedGoals = prevGoals.filter((goal) => goal.id !== goalId2);
-      return updatedGoals;
-    });
+    // const index = products.findIndex((item) => item.goalId !== goalId);
+    // const product = { ...products[index] };
+    // product.quantity++;
+    // setProducts(product);
   };
 
   const minusHandler = (id) => {
