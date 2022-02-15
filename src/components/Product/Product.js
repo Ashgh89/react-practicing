@@ -31,7 +31,7 @@ const Product = ({
   };
   return (
     <div className={styles.product}>
-      <input type="text" onChange={changeHandler} value={userName} />
+      {/* <input type="text" onChange={changeHandler} value={userName} /> */}
       <p>Product Name: {product.title} </p>
       <p>Price: {product.price}</p>
       <span className={styles.value}>{product.quantity}</span>

@@ -18,7 +18,7 @@ const reducer = (state, action) => {
     case "increment": {
       // 1. id=> ok
       // 2. index
-      const index = state.findIndex((item) => item.goalId !== action.id);
+      const index = state.findIndex((item) => item.id === action.id);
       // 3. clone the selected index and update the qty
       const product = { ...state[index] };
       product.quantity++;
@@ -44,11 +44,12 @@ const reducer = (state, action) => {
       }
     }
     case "edit": {
-      const updatedProducts = [...state];
+      const updatesProducts = [...state];
 
-      const selectedItem = updatedProducts.find((p) => p.id === action.id);
+      const selectedItem = updatesProducts.find((p) => p.id === action.id);
+
       selectedItem.title = action.event.target.value;
-      return updatedProducts;
+      return updatesProducts;
     }
 
     case "remove":
@@ -108,7 +109,7 @@ export const useProductsActions = () => {
   //   //ODER-------------------------
   //   // 1. id=> ok
   //   // 2. index
-  //   // const index = products.findIndex((item) => item.goalId !== goalId);
+  //   // const index = products.findIndex((item) => item.goalId === goalId);
   //   // // 3. clone the selected index and update the qty
   //   // const product = { ...products[index] };
   //   // product.quantity++;
