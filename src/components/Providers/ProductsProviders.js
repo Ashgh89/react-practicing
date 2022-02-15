@@ -4,12 +4,29 @@ import { useState } from "react/cjs/react.development";
 /*export*/ const ProductContext = React.createContext(); // state
 /*export*/ const ProductContextDispatcher = React.createContext(); // setState()
 
-// 3. NOW CREATE initialSTate
+// 3. NOW CREATE initialSTate and put our useState here (our products)
 const initialState = [
   { title: "React.js", price: "90€", id: "1", quantity: "1" },
   { title: "Vue.js", price: "80€", id: "2", quantity: "2" },
   { title: "Angular.js", price: "30€", id: "3", quantity: "3" },
 ];
+
+// 4. Create reducer function
+const reducer = (state, action) => {
+  console.log(state, action);
+  switch (action.type) {
+    case "increment":
+      return state + action.value;
+    case "decrement":
+      return state - action.value;
+    case "edit":
+      return initialState;
+    case "remove":
+      return initialState;
+    default:
+      return state;
+  }
+};
 
 const ProductsProvider = ({ children }) => {
   // 1. NOW LET'S USE useReducer, SO First we comment the useState and create useReducer
@@ -20,7 +37,7 @@ const ProductsProvider = ({ children }) => {
   // ]);
 
   // 2. SO LET'S CREATE useReducer
-  const [products, setProducts] = useReducer(reducer, initialState);
+  const [products, dispatch] = useReducer(reducer, initialState);
 
   return (
     <ProductContext.Provider value={products}>
