@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { useReducer } from "react/cjs/react.development";
+import { productsData } from "../../db/products";
 
 /*export*/ const ProductContext = React.createContext(); // state
 /*export*/ const ProductContextDispatcher = React.createContext(); // setState()
@@ -55,6 +56,10 @@ const reducer = (state, action) => {
     case "remove":
       const mySetProducts = state.filter((p) => p.id !== action.id);
       return mySetProducts;
+    case "filter":
+      console.log(action.event.target.value);
+      return state;
+
     default:
       return state;
   }
@@ -69,7 +74,7 @@ const ProductsProvider = ({ children }) => {
   // ]);
 
   // 2. SO LET'S CREATE useReducer
-  const [products, dispatch] = useReducer(reducer, initialState);
+  const [products, dispatch] = useReducer(reducer, productsData);
 
   return (
     <ProductContext.Provider value={products}>

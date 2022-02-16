@@ -14,7 +14,7 @@ export const productsData = [
     sku: 12966119137421312,
     title: "Danger Knife Gray T-Shirt",
     quantity: 1,
-    availableSizes: ["S", "XL", "XXL"],
+    availableSizes: ["XS", "XL", "XXL"],
     description: "Danger Knife Gray",
     price: 14.9,
     isFreeShipping: true,
