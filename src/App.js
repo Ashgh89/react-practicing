@@ -22,5 +22,3 @@ const App = () => {
 };
 
 export default Wrapper(App, "container");
-
-//NOTICE IF YOU ARE NOT UNDERSTAND, WATCH VIDEO 63 and 64

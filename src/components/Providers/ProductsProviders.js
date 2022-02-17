@@ -56,9 +56,13 @@ const reducer = (state, action) => {
     case "remove":
       const mySetProducts = state.filter((p) => p.id !== action.id);
       return mySetProducts;
+
     case "filter":
       console.log(action.event.target.value);
-      return state;
+      const updatedProducts = state.filter(
+        (p) => p.availableSizes.indexOf(action.event.target.value) >= 0
+      );
+      return updatedProducts;
 
     default:
       return state;
