@@ -58,13 +58,13 @@ const reducer = (state, action) => {
       return mySetProducts;
 
     case "filter":
-      console.log(action.event.target.value);
+      console.log(action.event.value);
       // If we click on All, it give us all of products
-      if (action.event.target.value === "") {
+      if (action.event.value === "") {
         return productsData;
       } else {
         const updatedProducts = productsData.filter(
-          (p) => p.availableSizes.indexOf(action.event.target.value) >= 0
+          (p) => p.availableSizes.indexOf(action.event.value) >= 0
         );
         return updatedProducts;
       }
