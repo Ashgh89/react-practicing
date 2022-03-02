@@ -22,7 +22,7 @@ const options = [
   { value: "M", label: "M" },
   { value: "L", label: "L" },
   { value: "XL", label: "XL" },
-  { value: "XXlL", label: "XXL" },
+  { value: "XXL", label: "XXL" },
 ];
 const Filter = () => {
   const dispatch = useProductsActions();
