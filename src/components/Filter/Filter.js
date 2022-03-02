@@ -9,10 +9,12 @@
         options={options}
       /> and paste it */
 // 4. Make an options array object
+// 5. delete target in ProductsProviders
+// 6. Style it
 import Select from "react-select";
 import { useState } from "react";
 import { useProductsActions } from "../Providers/ProductsProviders";
-
+import styles from "./filter.module.css";
 const options = [
   { value: "", label: "All" },
   { value: "XS", label: "XS" },
@@ -20,9 +22,8 @@ const options = [
   { value: "M", label: "M" },
   { value: "L", label: "L" },
   { value: "XL", label: "XL" },
-  { value: "XXL", label: "XXL" },
+  { value: "XXlL", label: "XXL" },
 ];
-
 const Filter = () => {
   const dispatch = useProductsActions();
   const [value, setValue] = useState("");
@@ -31,12 +32,11 @@ const Filter = () => {
     dispatch({ type: "filter", event: selectedOption });
     setValue(selectedOption);
   };
-
   return (
-    <div>
+    <div className={styles.filter}>
       <p>filter products based on:</p>
-      <div>
-        order by
+      <div className={styles.selectContainer}>
+        <span>order by</span>
         {/* <select onChange={changeHandler} value={value}>
           <option value="">All</option>
           <option value="XS">XS</option>
@@ -53,6 +53,7 @@ const Filter = () => {
           onChange={changeHandler}
           // put your options array object here
           options={options}
+          className={styles.select}
         />
       </div>
     </div>
