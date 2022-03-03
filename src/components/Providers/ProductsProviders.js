@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useReducer } from "react/cjs/react.development";
 import { productsData } from "../../db/products";
-
+import _ from "lodash";
 /*export*/ const ProductContext = React.createContext(); // state
 /*export*/ const ProductContextDispatcher = React.createContext(); // setState()
 
@@ -58,43 +58,30 @@ const reducer = (state, action) => {
       return mySetProducts;
 
     case "filter":
-      console.log(action.event.value);
+      console.log(action.selectedOption.value);
       // If we click on All, it give us all of products
-      if (action.event.value === "") {
+      if (action.selectedOption.value === "") {
         return productsData;
       } else {
         const updatedProducts = productsData.filter(
-          (p) => p.availableSizes.indexOf(action.event.value) >= 0
+          (p) => p.availableSizes.indexOf(action.selectedOption.value) >= 0
         );
         return updatedProducts;
       }
 
-    // We have standard methode for SORT
+    // first of all in the Terminal npm i lodash and press enter.
+    // after that import that at the top -> import _ from "lodash";
+    // now give it here -> _.orderBy(products, ["price", ["asc"]]);
+    // Very very very better way 😋
+    // NOTICE : DO NOT FORGET THAT WE IMPORT -> import _ from "lodash"; AT THE TOP
+    // I CANNOT MAKE A SCREENSHOT, BECAUSE IT IS A LONG PAGE 🙍‍♂️
     case "sort": {
       const value = action.selectedOption.value;
       const products = [...state];
-      if (value === "Lowest") {
-        const sortedProducts = products.sort((a, b) => {
-          if (a.price > b.price) {
-            return 1;
-          }
-          if (a.price < b.price) {
-            return -1;
-          }
-          return 0;
-        });
-        return sortedProducts;
+      if (value === "lowest") {
+        return _.orderBy(products, ["price"], ["asc"]);
       } else {
-        const sortedProducts = products.sort((a, b) => {
-          if (a.price < b.price) {
-            return 1;
-          }
-          if (a.price > b.price) {
-            return -1;
-          }
-          return 0;
-        });
-        return sortedProducts;
+        return _.orderBy(products, ["price"], ["desc"]);
       }
     }
 

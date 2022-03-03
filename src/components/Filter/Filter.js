@@ -35,13 +35,15 @@ const Filter = () => {
   const [sort, setSort] = useState("");
 
   const changeHandler = (selectedOption) => {
-    dispatch({ type: "filter", event: selectedOption });
+    dispatch({ type: "filter", selectedOption });
+    // Because if we select e.g L or S, it should be in price sorted as well
+    dispatch({ type: "sort", selectedOption: sort });
     setValue(selectedOption);
   };
 
   const sortHandler = (selectedOption) => {
     console.log(selectedOption);
-    dispatch({ type: "sort", event: selectedOption });
+    dispatch({ type: "sort", selectedOption });
     setSort(selectedOption);
   };
   return (
