@@ -69,8 +69,9 @@ const reducer = (state, action) => {
         return updatedProducts;
       }
 
+    // We have standard methode for SORT
     case "sort": {
-      const value = action.event.target.value;
+      const value = action.selectedOption.value;
       const products = [...state];
       if (value === "Lowest") {
         const sortedProducts = products.sort((a, b) => {
