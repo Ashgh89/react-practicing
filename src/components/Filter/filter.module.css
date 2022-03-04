@@ -5,7 +5,9 @@
   align-items: center;
 }
 
-.select {
+/* NOTICE WE COPY THE CODES BELOW INTO THE COMMON, FILTER, filter.module.css */
+
+/* .select {
   width: 200px;
 }
 
@@ -17,4 +19,4 @@
 .selectContainer span {
   display: block;
   margin-right: 1rem;
-}
+} */

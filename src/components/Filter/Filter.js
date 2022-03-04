@@ -11,6 +11,11 @@
 // 4. Make an options array object
 // 5. delete target in ProductsProviders
 // 6. Style it
+
+// As you see here, we reapet our codes here, so a good way is
+// to reuseable our components, now let's start with FilterComponent so our (sort).
+// We create new folder and name it Filter and create new file a name it FilterComponent
+// We can style it as well
 import Select from "react-select";
 import { useState } from "react";
 import { useProductsActions } from "../Providers/ProductsProviders";
@@ -52,16 +57,13 @@ const Filter = () => {
       <div className={styles.selectContainer}>
         <span>order by</span>
         <Select
-          // change selectedOption to value
           value={value}
-          // change this.handleChange to changeHandler
           onChange={changeHandler}
-          // put your options array object here
           options={options}
           className={styles.select}
         />
       </div>
-      <div className={styles.selectContainer}>
+      {/* <div className={styles.selectContainer}>
         <span>order by</span>
         <Select
           value={sort}
@@ -69,7 +71,7 @@ const Filter = () => {
           options={sortOptions}
           className={styles.select}
         />
-      </div>
+      </div> */}
     </div>
   );
 };
