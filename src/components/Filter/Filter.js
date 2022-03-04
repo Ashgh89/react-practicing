@@ -21,6 +21,7 @@ import { useState } from "react";
 import { useProductsActions } from "../Providers/ProductsProviders";
 import styles from "./filter.module.css";
 import SelectComponent from "../../common/Select/SelectComponent";
+import Search from "../../common/Search/Search";
 const options = [
   { value: "", label: "All" },
   { value: "XS", label: "XS" },
@@ -58,39 +59,24 @@ const Filter = () => {
   // We can style it as well
   // Se how are codes is cleaner, WOWWWWWW 😎
   return (
-    <div className={styles.filter}>
-      <p>filter products based on:</p>
-      <div className={styles.selectContainer}>
-        {/* <span>order by</span>
-        <Select
+    <section>
+      <Search filter={value} />
+      <div className={styles.filter}>
+        <p>filter products based on:</p>
+        <SelectComponent
+          title="filter by size"
           value={value}
           onChange={changeHandler}
           options={options}
-          className={styles.select}
-        /> */}
-      </div>
-      <SelectComponent
-        title="filter by size"
-        value={value}
-        onChange={changeHandler}
-        options={options}
-      />
-      <SelectComponent
-        title="sort by price"
-        value={sort}
-        onChange={sortHandler}
-        options={sortOptions}
-      />
-      {/* <div className={styles.selectContainer}>
-        <span>order by</span>
-        <Select
+        />
+        <SelectComponent
+          title="sort by price"
           value={sort}
           onChange={sortHandler}
           options={sortOptions}
-          className={styles.select}
         />
-      </div> */}
-    </div>
+      </div>
+    </section>
   );
 };
 

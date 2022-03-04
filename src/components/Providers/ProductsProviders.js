@@ -90,7 +90,7 @@ const reducer = (state, action) => {
       if (value === "") {
         return state;
       } else {
-        const filteredProducts = productsData.filter((p) =>
+        const filteredProducts = state.filter((p) =>
           p.title.toLowerCase().includes(value.toLowerCase())
         );
         return filteredProducts;

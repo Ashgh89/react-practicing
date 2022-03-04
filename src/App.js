@@ -15,7 +15,7 @@ const App = () => {
     <>
       <ProductsProvider>
         <NavBar /*totalItem={products.filter((p) => p.quantity > 0).length}*/ />
-        <Search />
+        {/* <Search /> */}
         <Filter />
         <ProductList />
       </ProductsProvider>
