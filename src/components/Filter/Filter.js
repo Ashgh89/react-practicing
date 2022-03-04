@@ -13,13 +13,14 @@
 // 6. Style it
 
 // As you see here, we reapet our codes here, so a good way is
-// to reuseable our components, now let's start with FilterComponent so our (sort).
-// We create new folder and name it Filter and create new file a name it FilterComponent
+// to reuseable our components, now let's start with SelectComponent so our (sort).
+// We create new folder and name it Select and create new file a name it FilterComponent
 // We can style it as well
-import Select from "react-select";
+// import Select from "react-select";
 import { useState } from "react";
 import { useProductsActions } from "../Providers/ProductsProviders";
 import styles from "./filter.module.css";
+import SelectComponent from "../../common/Select/SelectComponent";
 const options = [
   { value: "", label: "All" },
   { value: "XS", label: "XS" },
@@ -36,8 +37,8 @@ const sortOptions = [
 ];
 const Filter = () => {
   const dispatch = useProductsActions();
-  const [value, setValue] = useState("");
-  const [sort, setSort] = useState("");
+  const [value, setValue] = useState(""); // filter by size
+  const [sort, setSort] = useState(""); // sort by price
 
   const changeHandler = (selectedOption) => {
     dispatch({ type: "filter", selectedOption });
@@ -51,18 +52,35 @@ const Filter = () => {
     dispatch({ type: "sort", selectedOption });
     setSort(selectedOption);
   };
+  // As you see here, we reapet our codes here, so a good way is
+  // to reuseable our components, now let's start with SelectComponent so our (sort and filter).
+  // We create new folder and name it Select and create new file a name it SelectComponent
+  // We can style it as well
+  // Se how are codes is cleaner, WOWWWWWW 😎
   return (
     <div className={styles.filter}>
       <p>filter products based on:</p>
       <div className={styles.selectContainer}>
-        <span>order by</span>
+        {/* <span>order by</span>
         <Select
           value={value}
           onChange={changeHandler}
           options={options}
           className={styles.select}
-        />
+        /> */}
       </div>
+      <SelectComponent
+        title="filter by size"
+        value={value}
+        onChange={changeHandler}
+        options={options}
+      />
+      <SelectComponent
+        title="sort by price"
+        value={sort}
+        onChange={sortHandler}
+        options={sortOptions}
+      />
       {/* <div className={styles.selectContainer}>
         <span>order by</span>
         <Select

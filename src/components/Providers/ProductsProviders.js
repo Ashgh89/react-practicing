@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useReducer } from "react/cjs/react.development";
 import { productsData } from "../../db/products";
-import _ from "lodash";
+import _, { includes } from "lodash";
 /*export*/ const ProductContext = React.createContext(); // state
 /*export*/ const ProductContextDispatcher = React.createContext(); // setState()
 
@@ -82,6 +82,18 @@ const reducer = (state, action) => {
         return _.orderBy(products, ["price"], ["asc"]);
       } else {
         return _.orderBy(products, ["price"], ["desc"]);
+      }
+    }
+    case "search": {
+      const value = action.event.target.value;
+
+      if (value === "") {
+        return state;
+      } else {
+        const filteredProducts = productsData.filter((p) =>
+          p.title.toLowerCase().includes(value.toLowerCase())
+        );
+        return filteredProducts;
       }
     }
 

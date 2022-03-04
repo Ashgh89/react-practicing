@@ -1,10 +1,13 @@
 import { useState } from "react";
 import styles from "./search.module.css";
+import { useProductsActions } from "../../components/Providers/ProductsProviders";
 
 const Search = () => {
+  const dispatch = useProductsActions();
   const [value, setValue] = useState("");
   const changeHandler = (e) => {
-    console.log(e.target.value);
+    dispatch({ type: "search", event: e });
+    setValue(e.target.value);
   };
   return (
     <div className={styles.formControl}>
